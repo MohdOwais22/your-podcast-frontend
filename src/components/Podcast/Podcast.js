@@ -4,6 +4,7 @@ import './Podcast.css';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useDispatch, useSelector } from 'react-redux';
 import { updatePodcastViews } from '../../actions/podcast';
+import { addPodcastToFavorite } from '../../actions/user';
 import { toast } from 'react-hot-toast';
 
 const Podcast = ({ completePodcast }) => {
@@ -31,6 +32,14 @@ const Podcast = ({ completePodcast }) => {
   useEffect(() => {
     dispatch(updatePodcastViews(completePodcast._id));
   }, [dispatch]);
+
+  const addToFavourite = async () => {
+    try {
+      await dispatch(addPodcastToFavorite(completePodcast._id));
+    } catch (error) {
+      toast.error(error);
+    }
+  };
 
   return (
     <>
@@ -94,6 +103,7 @@ const Podcast = ({ completePodcast }) => {
                 color: '#000',
               }}
               startIcon={<FavoriteIcon />}
+              onClick={addToFavourite}
             >
               Add to Favourites
             </Button>

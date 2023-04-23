@@ -8,7 +8,7 @@ export const podcastReducer = createReducer({}, (builder) => {
     .addCase('GET_PODCASTS_REQUEST', (state) => {
       state.loading = true;
     })
-    .addCase('logoutRequest', (state) => {
+    .addCase('GET_PODCAST_REQUEST', (state) => {
       state.loading = true;
     })
     .addCase('UPDATE_VIEWS_REQUEST', (state) => {
@@ -25,12 +25,11 @@ export const podcastReducer = createReducer({}, (builder) => {
     })
     .addCase('GET_PODCASTS_SUCCESS', (state, action) => {
       state.loading = false;
-      state.podcasts = action.payload;
+      state.filteredPodcasts = action.payload;
       state.user = action.payload;
     })
-    .addCase('logoutSuccess', (state, action) => {
+    .addCase('GET_PODCAST_SUCCESS', (state, action) => {
       state.loading = false;
-      state.isAuthenticated = false;
       state.message = action.payload;
       state.user = null;
     })
@@ -51,12 +50,11 @@ export const podcastReducer = createReducer({}, (builder) => {
     })
     .addCase('GET_PODCASTS_FAIL', (state, action) => {
       state.loading = false;
-      state.podcast = null;
+      state.filteredPodcasts = null;
       state.error = action.payload;
     })
-    .addCase('logoutFail', (state, action) => {
+    .addCase('GET_PODCAST_FAIL', (state, action) => {
       state.loading = false;
-      state.isAuthenticated = true;
       state.error = action.payload;
     })
     .addCase('UPDATE_VIEWS_FAIL', (state, action) => {

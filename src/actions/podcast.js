@@ -63,3 +63,27 @@ export const updatePodcastViews = (id) => async (dispatch) => {
     });
   }
 };
+
+export const getPodcast =
+  (keyword = '', category) =>
+  async (dispatch) => {
+    console.log(keyword, category);
+    try {
+      dispatch({ type: 'GET_PODCAST_REQUEST' });
+      let link = `${server}/getPodcasts?keyword=${keyword}`;
+      if (category) {
+        link = `${server}/getPodcasts?keyword=${keyword}&category=${category}`;
+      }
+      const { data } = await axios.get(link);
+      dispatch({
+        type: 'GET_PODCAST_SUCCESS',
+        payload: data,
+      });
+      console.log(data);
+    } catch (error) {
+      dispatch({
+        type: 'GET_PODCAST_FAIL',
+        payload: error.response.data.message,
+      });
+    }
+  };

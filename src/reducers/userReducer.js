@@ -11,6 +11,9 @@ export const userReducer = createReducer({}, (builder) => {
     .addCase('USER_LOGOUT_REQUEST', (state) => {
       state.loading = true;
     })
+    .addCase('GET_MY_FAVORITE_PODCASTS_REQUEST', (state) => {
+      state.loading = true;
+    })
     .addCase('USER_REGISTER_REQUEST', (state) => {
       state.loading = true;
     });
@@ -31,6 +34,17 @@ export const userReducer = createReducer({}, (builder) => {
       state.message = action.payload;
       state.user = null;
     })
+    .addCase('ADD_TO_FAVORITE_REQUEST', (state) => {
+      state.loading = true;
+    })
+    .addCase('ADD_TO_FAVORITE_SUCCESS', (state, action) => {
+      state.loading = false;
+      state.message = action.payload;
+    })
+    .addCase('GET_MY_FAVORITE_PODCASTS_SUCCESS', (state, action) => {
+      state.loading = false;
+      state.favoritePodcasts = action.payload;
+    })
     .addCase('USER_REGISTER_SUCCESS', (state, action) => {
       state.loading = false;
       state.isAuthenticated = true;
@@ -50,6 +64,15 @@ export const userReducer = createReducer({}, (builder) => {
     .addCase('USER_LOGOUT_FAIL', (state, action) => {
       state.loading = false;
       state.isAuthenticated = true;
+      state.error = action.payload;
+    })
+    .addCase('ADD_TO_FAVORITE_FAIL', (state, action) => {
+      state.loading = false;
+      state.message = null;
+      state.error = action.payload;
+    })
+    .addCase('GET_MY_FAVORITE_PODCASTS_FAIL', (state, action) => {
+      state.loading = false;
       state.error = action.payload;
     })
     .addCase('USER_REGISTER_FAIL', (state, action) => {

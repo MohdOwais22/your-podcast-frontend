@@ -34,6 +34,16 @@ function App() {
         />
         <Route
           exact
+          path="/search"
+          element={isAuthenticated ? <Home /> : <Navigate to="/login" />}
+        />
+        <Route
+          exact
+          path="/favourites"
+          element={isAuthenticated ? <Home /> : <Navigate to="/login" />}
+        />
+        <Route
+          exact
           path="/signup"
           element={!isAuthenticated ? <Signup /> : <Navigate to="/" />}
         />

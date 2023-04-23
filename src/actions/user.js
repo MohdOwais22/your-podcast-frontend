@@ -95,3 +95,32 @@ export const logOut = () => async (dispatch) => {
     });
   }
 };
+
+export const addPodcastToFavorite = (id) => async (dispatch) => {
+  console.log(id);
+  try {
+    dispatch({ type: 'ADD_TO_FAVORITE_REQUEST' });
+    const { data } = await axios.put(`${server}/favorites/${id}`);
+    dispatch({ type: 'ADD_TO_FAVORITE_SUCCESS', payload: data });
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: 'ADD_TO_FAVORITE_FAIL',
+      payload: error.response,
+    });
+  }
+};
+
+export const getMyFavoritePodcasts = () => async (dispatch) => {
+  try {
+    dispatch({ type: 'GET_MY_FAVORITE_PODCASTS_REQUEST' });
+    const { data } = await axios.get(`${server}/favorites`);
+    dispatch({ type: 'GET_MY_FAVORITE_PODCASTS_SUCCESS', payload: data });
+  } catch (error) {
+    dispatch({
+      type: 'GET_MY_FAVORITE_PODCASTS_FAIL',
+      payload: error.response,
+    });
+  }
+};
