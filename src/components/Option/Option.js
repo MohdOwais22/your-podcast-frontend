@@ -24,12 +24,16 @@ const Option = () => {
             Home
           </Button>
         </Link>
-        <Button style={{ margin: '4px' }} variant="outline" color="primary">
-          Search
-        </Button>
-        <Button style={{ margin: '4px' }} variant="outline" color="primary">
-          Favourites
-        </Button>
+        <Link to="/search">
+          <Button style={{ margin: '4px' }} variant="outline" color="primary">
+            Search
+          </Button>
+        </Link>
+        <Link to="/favourite">
+          <Button style={{ margin: '4px' }} variant="outline" color="primary">
+            Favourites
+          </Button>
+        </Link>
       </Stack>
       <Box style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <Button

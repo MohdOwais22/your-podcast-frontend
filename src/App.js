@@ -6,7 +6,8 @@ import Login from './pages/login/Login.js';
 // import ProtectedRoute from './components/Route/ProtectedRoute.js';
 import Home from './pages/Home/Home';
 import NotFound from './pages/Not Found/NotFound';
-import PodcastScreen from './pages/DisplayScreen/PodcastScreen';
+import Search from './pages/Search/Search';
+import Favourite from './pages/Favourite/Favourite';
 
 function App() {
   // const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -18,6 +19,8 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/login" element={<Login />} />
+        <Route exact path="/search" element={<Search />} />
+        <Route exact path="/favourite" element={<Favourite />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
