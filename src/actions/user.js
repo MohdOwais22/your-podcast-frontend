@@ -1,12 +1,13 @@
 import axios from 'axios';
 
-const server = 'https://your-podcast-api.onrender.com';
+const server = 'http://localhost:5000/api/v1/user';
+// const server = 'https://your-podcast-api.onrender.com/api/v1/user';
 
-export const register = async (name, email, password) => {
+export const register = (name, email, password) => async (dispatch) => {
   try {
-    dispatchEvent({ type: 'USER_REGISTER_REQUEST' });
+    dispatch({ type: 'USER_REGISTER_REQUEST' });
     const { data } = await axios.post(
-      `${server}/api/v1/user/register`,
+      `${server}/register`,
       {
         name,
         email,
@@ -18,48 +19,62 @@ export const register = async (name, email, password) => {
         },
       }
     );
-    dispatchEvent({ type: 'USER_REGISTER_SUCCESS', payload: data });
+    dispatch({ type: 'USER_REGISTER_SUCCESS', payload: data });
   } catch (error) {
-    dispatchEvent({
+    dispatch({
       type: 'USER_REGISTER_FAIL',
       payload: error.response.data.message,
     });
   }
 };
 
-export const login = async (email, password) => {
+export const login = (cred) => async (dispatch) => {
+  console.log(cred);
   try {
-    dispatchEvent({ type: 'USER_LOGIN_REQUEST' });
+    dispatch({ type: 'USER_LOGIN_REQUEST' });
     const { data } = await axios.post(
-      `${server}/api/v1/user/login`,
+      `${server}/login`,
       {
-        email,
-        password,
+        email: cred.email,
+        password: cred.password,
       },
       {
         headers: {
           'Content-Type': 'application/json',
         },
+        withCredentials: true,
       }
     );
-    dispatchEvent({ type: 'USER_LOGIN_SUCCESS', payload: data });
+    dispatch({ type: 'USER_LOGIN_SUCCESS', payload: data });
+    console.log(data);
   } catch (error) {
-    dispatchEvent({
+    console.log(error.response);
+    dispatch({
       type: 'USER_LOGIN_FAIL',
       payload: error.response.data.message,
     });
   }
 };
 
-export const loadUser = async () => {
+export const loadUser = () => async (dispatch) => {
   try {
-    dispatchEvent({ type: 'USER_LOAD_REQUEST' });
-    const { data } = await axios.get(`${server}/api/v1/user/me`);
-    dispatchEvent({ type: 'USER_LOAD_SUCCESS', payload: data });
+    dispatch({
+      type: 'USER_LOAD_REQUEST',
+    });
+    const { data } = await axios.get(`${server}/me`, {
+      withCredentials: true,
+    });
+
+    dispatch({
+      type: 'USER_LOAD_SUCCESS',
+      payload: data.user,
+    });
+    console.log(data.user);
   } catch (error) {
-    dispatchEvent({
+    console.log(error);
+    dispatch({
       type: 'USER_LOAD_FAIL',
-      payload: error.response.data.message,
+      payload: error.response,
     });
   }
 };

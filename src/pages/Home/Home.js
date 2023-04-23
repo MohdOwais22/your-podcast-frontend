@@ -2,7 +2,7 @@ import React from 'react';
 import Loader from '../../components/Loader/Loader';
 
 const Home = () => {
-  const loading = true;
+  const loading = false;
   return <>{loading ? <Loader /> : <div>Home</div>}</>;
 };
 

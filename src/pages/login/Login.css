@@ -1,0 +1,105 @@
+.register {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.col-1 {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#form {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input {
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  border: none;
+  margin-bottom: 1rem;
+  width: 80%;
+}
+
+button.btn {
+  margin-top: 2rem;
+  width: 80%;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 2rem;
+  background-color: #f50c72;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+button.btn:hover {
+  background-color: #fff;
+  color: #f50c72;
+}
+
+button.btn-secondary {
+  background-color: transparent;
+  color: #f1d3d3;
+  font-size: 1.2rem;
+  border: none;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+button.btn-secondary:hover {
+  color: #f50c72;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.podcast {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  animation: rotate 10s linear infinite;
+}
+
+.podcast img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error {
+  color: #dc3545;
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
