@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 * > * {
     font-family: "Poppins", cursive;
@@ -6,9 +6,9 @@
 }
 
 body{
-  background: #0f0c29;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #0f0c29; 
+  background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  
+  background: linear-gradient(to right, #24243e, #302b63, #0f0c29); 
   
 }
 
@@ -26,7 +26,6 @@ body{
   display:flex;
   border: 1px solid #e9ecef;
   border-radius: 5px;
-  /* box-shadow: 1px 3px 10px #e9ecef; */
   background-color: white;
 }
 
@@ -84,4 +83,4 @@ body{
   .register .col-2 img{
     display: initial;
   }
-}
+} */

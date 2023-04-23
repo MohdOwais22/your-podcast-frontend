@@ -3,15 +3,15 @@ import axios from 'axios';
 const server = 'http://localhost:5000/api/v1/user';
 // const server = 'https://your-podcast-api.onrender.com/api/v1/user';
 
-export const register = (name, email, password) => async (dispatch) => {
+export const register = (cred) => async (dispatch) => {
   try {
     dispatch({ type: 'USER_REGISTER_REQUEST' });
     const { data } = await axios.post(
-      `${server}/register`,
+      `${server}/new`,
       {
-        name,
-        email,
-        password,
+        name: cred.name,
+        email: cred.email,
+        password: cred.password,
       },
       {
         headers: {

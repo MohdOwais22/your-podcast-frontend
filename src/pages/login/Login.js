@@ -20,18 +20,20 @@ const Login = () => {
     dispatch(loadUser());
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   if (isAuthenticated) {
-  //     toast.success('Logged in successfully');
-  //     navigate('/');
-  //   }
-  // }, [isAuthenticated, navigate]);
+  useEffect(() => {
+    if (isAuthenticated) {
+      toast.success('Logged in successfully');
+      navigate('/');
+    }
+  }, [isAuthenticated, navigate]);
 
   useEffect(() => {
     if (authError) {
       setError(authError);
       toast.error(authError);
     }
+    dispatch({ type: 'clearError' });
+    dispatch({ type: 'clearMessage' });
   }, [authError]);
 
   const onSubmit = async (event) => {
@@ -76,13 +78,13 @@ const Login = () => {
             </button>
           </form>
 
-          <p>
+          <div className="bottom-text">
             Not registered yet?
             <Link to="/signup">
               <button className="btn-secondary">Register</button>
             </Link>{' '}
             Now
-          </p>
+          </div>
         </div>
       </div>
     </section>

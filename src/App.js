@@ -8,7 +8,6 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import Signup from './pages/signup/Signup.js';
 import Login from './pages/login/Login.js';
-import ProtectedRoute from './components/Route/ProtectedRoute.js';
 import Home from './pages/Home/Home';
 import NotFound from './pages/Not Found/NotFound';
 import Dashboard from './pages/Dashboard/Dashboard';
@@ -26,7 +25,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* <Route
+        <Route
           exact
           path="/"
           element={isAuthenticated ? <Home /> : <Navigate to="/login" />}
@@ -40,8 +39,7 @@ function App() {
           exact
           path="/login"
           element={!isAuthenticated ? <Login /> : <Navigate to="/" />}
-        /> */}
-        <Route exact path="/login" element={<Login />} />
+        />
         <Route exact path="/home/dashboard" element={<Dashboard />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

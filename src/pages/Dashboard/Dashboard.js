@@ -1,23 +1,66 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import bgImg from './img1.jpg';
 import './Dashboard.css';
-import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import { uploadPodcast } from '../../actions/podcast';
+import { Toaster, toast } from 'react-hot-toast';
 
 export default function Dashboard() {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => console.log(data);
-  const [fileData, setFileData] = useState(null);
+  const { loading, error, podcast } = useSelector((state) => state.podcast);
+
+  console.log(podcast, error, loading);
+
+  const [formData, setFormData] = useState({
+    name: '',
+    description: '',
+    category: '',
+    speaker: '',
+    file: null,
+  });
+
+  useEffect(() => {
+    if (podcast) {
+      toast.success('Podcast Uploaded Successfully');
+    }
+    if (error) {
+      toast.error(error);
+    }
+    dispatch({ type: 'clearError' });
+    dispatch({ type: 'clearMessage' });
+  }, [podcast]);
+
+  const dispatch = useDispatch();
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    try {
+      dispatch(uploadPodcast(formData));
+      setFormData({
+        name: '',
+        description: '',
+        category: '',
+        speaker: '',
+        file: null,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   const handleFilePreview = (e) => {
     const file = e.target.files[0];
+    console.log(file);
     const reader = new FileReader();
     reader.onload = () => {
-      setFileData(reader.result);
+      setFormData({
+        ...formData,
+        file,
+      });
     };
     reader.readAsDataURL(file);
   };
@@ -28,57 +71,66 @@ export default function Dashboard() {
         <div className="col-1">
           <h2>ADMIN DASHBOARD</h2>
           <span>Add the Podcast</span>
-
-          <form
-            id="form"
-            className="flex flex-col"
-            onSubmit={handleSubmit(onSubmit)}
-          >
+          <Toaster />
+          <form id="form" className="flex flex-col" onSubmit={onSubmit}>
             <input
               type="text"
-              {...register('name')}
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
               placeholder="Podcast Name"
             />
             <input
               type="text"
-              {...register('description')}
+              name="description"
+              value={formData.description}
+              onChange={handleInputChange}
               placeholder="Podcast Description"
             />
-            <select {...register('category')}>
+            <select
+              name="category"
+              value={formData.category}
+              onChange={handleInputChange}
+            >
               <option value="audio">Audio</option>
               <option value="video">Video</option>
             </select>
             <input
               type="text"
-              {...register('speaker')}
+              name="speaker"
+              value={formData.speaker}
+              onChange={handleInputChange}
               placeholder="Name of the Speaker"
             />
 
             <input
               type="file"
-              {...register('myFile', {
-                required: true,
-                validate: {
-                  acceptedFormats: (value) =>
-                    ['audio/mpeg', 'audio/mp3', 'video/mp4'].includes(
-                      value[0].type
-                    ),
-                },
-              })}
+              name="file"
               accept=".mp3,.mp4"
               onChange={handleFilePreview}
             />
-            {errors.myFile && <span>This field is required</span>}
+            {formData.file === null && <span>This field is required</span>}
 
-            <button className="btn">Upload</button>
+            <button
+              disabled={formData.file === null || loading}
+              className="btn"
+            >
+              Upload
+            </button>
           </form>
         </div>
         <div className="col-2">
-          {fileData ? (
+          {formData.file ? (
             <div>
-              <video controls style={{ width: '300px', height: '300px' }}>
-                <source src={fileData} type="video/mp4" />
-              </video>
+              {formData.category === 'video' ? (
+                <video controls style={{ width: '300px', height: '300px' }}>
+                  <source src={formData.file} type="video/mp4" />
+                </video>
+              ) : (
+                <audio controls style={{ width: '300px' }}>
+                  <source src={formData.file} type="audio/mp3" />
+                </audio>
+              )}
             </div>
           ) : (
             <img
