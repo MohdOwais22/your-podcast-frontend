@@ -32,7 +32,7 @@ const Navbar = ({ user }) => {
                 marginRight: '0.5rem',
               }}
             >
-              <h4>Dashboard</h4>
+              <h3>Dashboard</h3>
             </Button>
           </Link>
         )}

@@ -4,6 +4,8 @@ import './Dashboard.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { uploadPodcast } from '../../actions/podcast';
 import { Toaster, toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import { LinearProgress } from '@mui/material';
 
 export default function Dashboard() {
   const { loading, error, podcast } = useSelector((state) => state.podcast);
@@ -16,11 +18,14 @@ export default function Dashboard() {
     file: null,
   });
 
+  const [progress, setProgress] = useState(0);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (podcast) {
       toast.success('Podcast Uploaded Successfully');
+      setProgress(0);
     }
     if (error) {
       toast.error(error);
@@ -52,7 +57,7 @@ export default function Dashboard() {
         file: null,
       });
     } catch (error) {
-      console.log(error);
+      toast.error(error);
     }
   };
 
@@ -76,6 +81,7 @@ export default function Dashboard() {
 
   return (
     <section>
+      <LinearProgress determinate value={progress} />
       <div className="container__dashboard">
         <div className="sub__container__dashboard__one">
           <h2>ADMIN DASHBOARD</h2>
