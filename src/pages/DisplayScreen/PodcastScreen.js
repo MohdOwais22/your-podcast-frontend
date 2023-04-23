@@ -1,12 +1,7 @@
-import { Container, Stack } from '@mui/material';
 import React from 'react';
 
 const PodcastScreen = () => {
-  return (
-    <Container>
-      <Stack direction={'column'}></Stack>
-    </Container>
-  );
+  return <div>PodcastScreen</div>;
 };
 
 export default PodcastScreen;

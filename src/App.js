@@ -19,7 +19,6 @@ function App() {
         <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/podcast/:obj" element={<PodcastScreen />} />
       </Routes>
     </Router>
   );

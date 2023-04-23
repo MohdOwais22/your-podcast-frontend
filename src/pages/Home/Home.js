@@ -3,7 +3,7 @@ import React from 'react';
 import { Container, Stack } from '@mui/material';
 import Option from '../../components/Option/Option';
 import Navbar from '../../components/Navbar/Navbar';
-import DisplayScreen from '../DisplayScreen/MainScreen';
+import MainScreen from '../DisplayScreen/MainScreen';
 
 const Home = () => {
   // const loading = true;
@@ -14,7 +14,8 @@ const Home = () => {
         <Option />
         <Stack direction={'column'}>
           <Navbar />
-          <DisplayScreen />
+
+          <MainScreen />
         </Stack>
       </Stack>
     </Container>
