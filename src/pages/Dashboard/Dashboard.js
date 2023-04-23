@@ -8,8 +8,6 @@ import { Toaster, toast } from 'react-hot-toast';
 export default function Dashboard() {
   const { loading, error, podcast } = useSelector((state) => state.podcast);
 
-  console.log(podcast, error, loading);
-
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -17,6 +15,8 @@ export default function Dashboard() {
     speaker: '',
     file: null,
   });
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (podcast) {
@@ -27,12 +27,21 @@ export default function Dashboard() {
     }
     dispatch({ type: 'clearError' });
     dispatch({ type: 'clearMessage' });
-  }, [podcast]);
-
-  const dispatch = useDispatch();
+  }, [podcast, dispatch, error]);
 
   const onSubmit = (event) => {
     event.preventDefault();
+
+    if (
+      !formData.name ||
+      !formData.description ||
+      !formData.category ||
+      !formData.speaker ||
+      !formData.file
+    ) {
+      toast.error('Please fill all the fields');
+      return;
+    }
     try {
       dispatch(uploadPodcast(formData));
       setFormData({
@@ -67,12 +76,16 @@ export default function Dashboard() {
 
   return (
     <section>
-      <div className="register">
-        <div className="col-1">
+      <div className="container__dashboard">
+        <div className="sub__container__dashboard__one">
           <h2>ADMIN DASHBOARD</h2>
-          <span>Add the Podcast</span>
+          <span>Add New Podcast</span>
           <Toaster />
-          <form id="form" className="flex flex-col" onSubmit={onSubmit}>
+          <form
+            id="form__dashboard"
+            className="form__dashboard"
+            onSubmit={onSubmit}
+          >
             <input
               type="text"
               name="name"
@@ -92,8 +105,12 @@ export default function Dashboard() {
               value={formData.category}
               onChange={handleInputChange}
             >
-              <option value="audio">Audio</option>
-              <option value="video">Video</option>
+              <option value="">Select Category</option>
+              <option value="audio">Books</option>
+              <option value="video">Celebrities</option>
+              <option value="video">Educational</option>
+              <option value="video">Lifestyle & Health</option>
+              <option value="video">Sports & Recreation</option>
             </select>
             <input
               type="text"
@@ -111,18 +128,15 @@ export default function Dashboard() {
             />
             {formData.file === null && <span>This field is required</span>}
 
-            <button
-              disabled={formData.file === null || loading}
-              className="btn"
-            >
+            <button disabled={loading} className="add__podcast__btn">
               Upload
             </button>
           </form>
         </div>
-        <div className="col-2">
+        <div className="sub__container__dashboard__two">
           {formData.file ? (
             <div>
-              {formData.category === 'video' ? (
+              {formData.file.type === 'audio/mp4' ? (
                 <video controls style={{ width: '300px', height: '300px' }}>
                   <source src={formData.file} type="video/mp4" />
                 </video>

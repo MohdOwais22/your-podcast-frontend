@@ -13,10 +13,11 @@ import NotFound from './pages/Not Found/NotFound';
 import Dashboard from './pages/Dashboard/Dashboard';
 import { useEffect } from 'react';
 import { loadUser } from './actions/user';
+import Navbar from './components/Navbar/Navbar';
 
 function App() {
-  const { isAuthenticated, loading, user } = useSelector((state) => state.user);
-  console.log(user?.role);
+  const { isAuthenticated, user } = useSelector((state) => state.user);
+  // console.log(user?.role);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadUser());
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <Router>
+      {isAuthenticated && <Navbar user={user} />}
       <Routes>
         <Route
           exact

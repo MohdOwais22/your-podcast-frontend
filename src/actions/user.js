@@ -46,9 +46,7 @@ export const login = (cred) => async (dispatch) => {
       }
     );
     dispatch({ type: 'USER_LOGIN_SUCCESS', payload: data });
-    console.log(data);
   } catch (error) {
-    console.log(error.response);
     dispatch({
       type: 'USER_LOGIN_FAIL',
       payload: error.response.data.message,
@@ -69,11 +67,30 @@ export const loadUser = () => async (dispatch) => {
       type: 'USER_LOAD_SUCCESS',
       payload: data.user,
     });
-    console.log(data.user);
   } catch (error) {
-    console.log(error);
     dispatch({
       type: 'USER_LOAD_FAIL',
+      payload: error.response.data.message,
+    });
+  }
+};
+
+export const logOut = () => async (dispatch) => {
+  try {
+    dispatch({
+      type: 'USER_LOGOUT_REQUEST',
+    });
+    const { data } = await axios.get(`${server}/logout`, {
+      withCredentials: true,
+    });
+
+    dispatch({
+      type: 'USER_LOGOUT_SUCCESS',
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: 'USER_LOGOUT_FAIL',
       payload: error.response,
     });
   }

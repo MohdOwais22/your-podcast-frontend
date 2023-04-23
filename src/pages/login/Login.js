@@ -10,7 +10,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  // const [error, setError] = useState('');
 
   const { isAuthenticated, error: authError } = useSelector(
     (state) => state.user
@@ -29,12 +29,12 @@ const Login = () => {
 
   useEffect(() => {
     if (authError) {
-      setError(authError);
+      // setError(authError);
       toast.error(authError);
     }
     dispatch({ type: 'clearError' });
     dispatch({ type: 'clearMessage' });
-  }, [authError]);
+  }, [authError, dispatch]);
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -42,20 +42,23 @@ const Login = () => {
       await dispatch(login({ email, password }));
       setEmail('');
       setPassword('');
-      setError('');
+      // setError('');
     } catch (error) {
-      setError(error.response);
       toast.error(error.response);
     }
   };
 
   return (
     <section>
-      <div className="register">
-        <div className="col-1">
+      <div className="container__dashboard">
+        <div className="sub_container__dashboard">
           <h2>Welcome Back</h2>
           <Toaster />
-          <form id="form" className="flex flex-col" onSubmit={onSubmit}>
+          <form
+            id="form__dashboard"
+            className="flex flex-col"
+            onSubmit={onSubmit}
+          >
             <input
               type="email"
               value={email}
@@ -71,7 +74,7 @@ const Login = () => {
               required
             />
 
-            {error && <div className="error">{error}</div>}
+            {/* {error && <div className="error">{error}</div>} */}
 
             <button className="btn" type="submit">
               Login
