@@ -7,7 +7,7 @@ html, body {
 
 body {
 margin: 0;
-background:#a85feb; font-family: "Euclid Circular A";
+background:white; font-family: "Euclid Circular A";
 }
 
 button, input {
@@ -29,23 +29,23 @@ outline: none;
 
 @keyframes music {
 100%{
-translate: -20 -20; 
+translate: -60 -50%; 
 scale: 1 1.5; 
 }
 }
 .music {
   position: fixed;
-  top: 55;
+  top: 30;
   left: 0;
-  height: 1700px; 
-  width: 1300px;
-  transform: translate(0%, -50%);
+  height: 2000px; 
+  width: 1500px;
+ translate:-50%, -50%;
   animation: music 5s infinite linear;
 }
 
 .Signup{
 position: fixed;
-z-index: 1;
+z-index: 2;
 top: 0;
 left:0;
 height:100%;
@@ -54,12 +54,12 @@ padding: 80px 80px;
 background: #000000;
 }
 .Signup > h2 {
-margin: 0 0 10px 8px;
+margin: 0px 0 8px;
 color: rgb(255 255 255/96%); 
 }
 
 .Signup > h3 { 
-margin: 0 0 30px;
+margin: 0 0 25px;
 color: rgba(255, 255, 255, 0.700);
 }
 .form{
@@ -73,7 +73,7 @@ color: rgba(255, 255, 255, 0.700);
 }
 .textbox span{
   position:absolute;
-  top:35%;
+  top:40%;
   translate: 0,-50%;
   left:0;
   font-size:22px;
@@ -118,8 +118,8 @@ input:focus~label {
 
 button {
 position: relative;
-top: 50%;
-left: 50%;
+top: 30%;
+left: 50%; 
 transform: translate(-50%, -50%);
 display: flex;
 align-items: center;
@@ -145,3 +145,177 @@ button:hover {
 .Signup p > a {
   color: #a85feb;
 }
+
+ /* CSS for devices with max width of 560px */
+@media screen and (max-width: 560px) {
+  body {
+    font-size: 16px;
+    background-color: #f5c99b;
+  }
+  
+  .Signup {
+    width: 100%;
+    padding: 40px 20px;
+    background-color: #000;
+  }
+  
+  .Signup > h2 {
+    font-size: 24px;
+  }
+  
+  .Signup > h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .form {
+    margin: 0;
+    display: grid;
+    gap: 10px;
+  }
+  
+  .textbox input {
+    padding: 0 12px 0 28px;
+    border-bottom: 2px solid #2b3442;
+    color: #fff;
+    height: 40px;
+  }
+  
+  .textbox label {
+    top: 45%;
+    left: 28px;
+    font-size: 18px;
+  }
+  
+  button {
+    height: 50px;
+    font-size: 18px;
+    padding: 0 12px;
+    border-radius: 4px;
+  }
+  
+  .Signup p {
+    font-size: 16px;
+  }
+}
+/* <768 and >560 */
+@media screen and (max-width: 768px) and (min-width: 561px) {
+  body {
+    font-size: 18px;
+    background-color: #c99bf5;
+  }
+
+  .music {
+    position: fixed;
+    top: 50;
+    left: 0;
+    height: 2050px; 
+    width: 1300px;
+    transform: translate(0%, -50%);
+    animation: music 5s infinite linear;
+  }
+
+  .Signup {
+    width: 50%;
+    padding: 80px;
+    background-color: #000;
+  }
+
+  .Signup > h2 {
+    font-size: 32px;
+  }
+
+  .Signup > h3 {
+    font-size: 24px;
+    margin-bottom: 40px;
+  }
+
+  .form {
+    margin: 0;
+    display: grid;
+    gap: 16px;
+  }
+
+  .textbox input {
+    padding: 0 36px 0 48px;
+    border-bottom: 2px solid #2b3442;
+    color: #fff;
+    height: 60px;
+  }
+
+  .textbox label {
+    top: 50%;
+    left: 48px;
+    font-size: 22px;
+  }
+
+  button {
+    height: 60px;
+    font-size: 18px;
+    padding: 0 36px;
+    border-radius: 6px;
+  }
+
+  .Signup p {
+    font-size: 20px;
+  }
+}
+/* >768 and <1440 */
+@media screen and (min-width: 769px) and (max-width: 1439px) {
+  body {
+    font-size: 20px;
+  }
+  .music {
+    position: fixed;
+    top: 50;
+    left: 0;
+    height:2050px; 
+    width: 1300px;
+    transform: translate(0%, -50%);
+    animation: music 5s infinite linear;
+  }
+
+  .Signup {
+    width: 50%;
+    padding: 80px;
+  }
+
+  .Signup > h2 {
+    font-size: 36px;
+  }
+
+  .Signup > h3 {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+
+  .textbox input {
+    padding: 0 32px 0 48px;
+    border-bottom: 2px solid #2b3442;
+    color: #fff;
+    height: 60px;
+  }
+
+  .textbox label {
+    top: 60%;
+    left: 48px;
+    font-size: 24px;
+  }
+
+  button {
+    height: 80px;
+    font-size: 24px;
+    padding: 0 32px;
+    border-radius: 6px;
+  }
+
+  .Signup p {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1441px) {
+  body {
+  background-color: #ffffff;
+  }
+  }

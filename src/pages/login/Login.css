@@ -1,0 +1,131 @@
+*{
+    box-sizing: border-box; 
+  }
+  html, body {
+      height: 100%;
+      background-color: black; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0px 0px 2px #9754d5;
+    }
+    
+  .bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    opacity: 0.6;
+  }
+  
+  .bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .container__content {
+    position: relative;
+    z-index:1;
+  }
+  
+    
+  .form__login {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .form__login > h2{
+    margin: 20px 40px 50px 20px;
+    color: #ffffff;
+    font-size:30px;
+  }
+  
+  .login__username,
+  .login__password {
+    display: flex;
+    align-items: center;
+    width: 400px;
+    height:50px;
+    margin: 20px;
+    border: 0.5px solid gray;
+    border-radius: 5px;
+  }
+  
+  .icons,
+  .icon {
+    margin: 0 10px;
+  }
+  
+  .icons,
+  .icon {
+    margin: 0;
+    position: absolute;
+    left: 10px;
+  }
+  
+  .login__username {
+    position: relative;
+  }
+  
+  .login__username input[type='text'] {
+    padding-left: 50px;
+  }
+  
+  .login__password {
+    position: relative;
+  }
+  
+  .login__password input[type='password'] {
+    padding-left: 50px;
+  }
+  
+  input[type='text'],
+  input[type='password'] {
+    flex: 1;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+  }
+
+  input[type='text']:focus,
+input[type='password']:focus {
+  box-shadow: 0px 0px 10px #9754d5;
+}
+  
+  .alert {
+    color: rgb(240, 50, 50);
+    margin-left: 10px;
+    font-size: 12px;
+  }
+  
+  .submit_btn_login[type='submit'] {
+    width: 400px;
+    height: 40px;
+    margin-top: 20px;
+    margin-left: 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: #653284;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .submit_btn_login[type='submit']:hover {
+    background-color: #ac7bf1;
+  }
+  
+  .form__login p{
+    color:#ffffff;
+    margin-left: 22px;
+  }
+  .form__login p > a{
+    color:#9754d5;
+  }
+  
