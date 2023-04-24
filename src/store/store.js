@@ -1,14 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import {
-  loadUserReducer,
-  loginReducer,
-  registerReducer,
-} from '../reducers/userReducer.js';
+import { userReducer } from '../reducers/userReducer.js';
+import { podcastReducer } from '../reducers/podcastReducer.js';
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
-    register: registerReducer,
-    login: loginReducer,
-    auth: loadUserReducer,
+    user: userReducer,
+    podcast: podcastReducer,
   },
 });
+
+export default store;
