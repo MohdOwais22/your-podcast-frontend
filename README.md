@@ -2,6 +2,9 @@ The app is hosted in render.com and takes time to load for the first time please
 
 The App is built in reactjs and uses redux for state management.
 
+
+# Link to backend repo https://github.com/MohdOwais22/your-podcasts-api
+
 # steps to run the repo in your localhost
 step:1 -> clone the repo
 
@@ -10,7 +13,6 @@ step:2 -> open terminal and do npm ci or just npm install
 
 
 step:3 -> do npm start it will start localhost server for the app and all backend requests are made to https://your-podcast-api.onrender.com/
-
 
 step:4 -> have patience
 
