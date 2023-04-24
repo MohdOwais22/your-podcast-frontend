@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+The app is hosted in render.com and takes time to load for the first time please have patience and enjoy using tuneIn.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The App is built in reactjs and uses redux for state management.
 
-## Available Scripts
 
-In the project directory, you can run:
+# Link to backend repo https://github.com/MohdOwais22/your-podcasts-api
+# backend deployed link https://your-podcast-api.onrender.com/
 
-### `npm start`
+# steps to run the repo in your localhost
+step:1 -> clone the repo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+step:2 -> open terminal and do npm ci or just npm install
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+step:3 -> do npm start it will start localhost server for the app and all backend requests are made to https://your-podcast-api.onrender.com/
 
-### `npm run build`
+step:4 -> have patience
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+step:5 -> login page will popup you can register a new account or use account with these credentials
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+email --> mohdowais@gmail.com
+password --> owais@123
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+step:6 -> admin account is already created and can be accessed by using credentials
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+email --> tempaccount@gmail.com
+password --> hackathon123
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+step:7 -> users can listen to podcasts and add podcasts to favourites
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+step:8 -> users can later listen to podcasts from favorites tab.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+step:9 -> admins can upload a new podcasts in mp3 or mp4 format.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+step:10 -> Made for hackathon conducted by flipr.ai.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
