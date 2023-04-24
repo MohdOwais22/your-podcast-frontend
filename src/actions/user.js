@@ -82,7 +82,7 @@ export const logOut = () => async (dispatch) => {
     dispatch({
       type: 'USER_LOGOUT_REQUEST',
     });
-    const { data } = await axios.get(`${server}/logout`, {
+    const { data } = await axios.delete(`${server}/logout`, {
       withCredentials: true,
     });
 

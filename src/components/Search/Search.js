@@ -22,7 +22,7 @@ const Search = () => {
       dispatch({ type: 'clearErrors' });
     }
     if (filteredPodcasts) {
-      setPodcasts(filteredPodcasts);
+      // setPodcasts(filteredPodcasts);
     }
     dispatch(getPodcast(keyword, category));
   }, [dispatch, keyword, category, error, filteredPodcasts]);
@@ -52,10 +52,10 @@ const Search = () => {
           <Grid item xs={12} sm={6} md={3} key={index}>
             <Podcast completePodcast={podcast} />
           </Grid>
-        ))}
+        ))} */}
         {podcasts.length === 0 && (
           <h1 style={{ textAlign: 'center' }}>No Podcasts Found</h1>
-        )} */}
+        )}
       </Stack>
       {/* </Stack> */}
     </Container>
