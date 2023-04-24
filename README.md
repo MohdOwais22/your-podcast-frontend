@@ -4,6 +4,7 @@ The App is built in reactjs and uses redux for state management.
 
 
 # Link to backend repo https://github.com/MohdOwais22/your-podcasts-api
+# backend deployed link https://your-podcast-api.onrender.com/
 
 # steps to run the repo in your localhost
 step:1 -> clone the repo
