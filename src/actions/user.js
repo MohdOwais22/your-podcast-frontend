@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const server = 'http://localhost:5000/api/v1/user';
-// const server = 'https://your-podcast-api.onrender.com/api/v1/user';
+// const server = 'http://localhost:5000/api/v1/user';
+const server = 'https://your-podcast-api.onrender.com/api/v1/user';
 
 export const register = (cred) => async (dispatch) => {
   try {
@@ -17,6 +17,7 @@ export const register = (cred) => async (dispatch) => {
         headers: {
           'Content-Type': 'application/json',
         },
+        withCredentials: true,
       }
     );
     dispatch({ type: 'USER_REGISTER_SUCCESS', payload: data });
@@ -61,6 +62,7 @@ export const loadUser = () => async (dispatch) => {
     });
     const { data } = await axios.get(`${server}/me`, {
       withCredentials: true,
+      sameSite: 'none',
     });
 
     dispatch({
@@ -100,7 +102,9 @@ export const addPodcastToFavorite = (id) => async (dispatch) => {
   console.log(id);
   try {
     dispatch({ type: 'ADD_TO_FAVORITE_REQUEST' });
-    const { data } = await axios.put(`${server}/favorites/${id}`);
+    const { data } = await axios.put(`${server}/favorites/${id}`, {
+      withCredentials: true,
+    });
     dispatch({ type: 'ADD_TO_FAVORITE_SUCCESS', payload: data });
     console.log(data);
   } catch (error) {
@@ -115,7 +119,9 @@ export const addPodcastToFavorite = (id) => async (dispatch) => {
 export const getMyFavoritePodcasts = () => async (dispatch) => {
   try {
     dispatch({ type: 'GET_MY_FAVORITE_PODCASTS_REQUEST' });
-    const { data } = await axios.get(`${server}/favorites`);
+    const { data } = await axios.get(`${server}/favorites`, {
+      withCredentials: true,
+    });
     dispatch({ type: 'GET_MY_FAVORITE_PODCASTS_SUCCESS', payload: data });
   } catch (error) {
     dispatch({

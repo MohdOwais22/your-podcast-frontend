@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const server = 'http://localhost:5000/api/v1/podcast';
-// const server = 'https://your-podcast-api.onrender.com/api/v1/user';
+// const server = 'http://localhost:5000/api/v1/podcast';
+const server = 'https://your-podcast-api.onrender.com/api/v1/podcast';
 
 export const uploadPodcast = (myForm) => async (dispatch) => {
   console.log(myForm);
@@ -79,11 +79,11 @@ export const getPodcast =
         type: 'GET_PODCAST_SUCCESS',
         payload: data,
       });
-      console.log(data);
+      console.log(data.podcasts);
     } catch (error) {
       dispatch({
         type: 'GET_PODCAST_FAIL',
-        payload: error.response.data.message,
+        payload: error.response,
       });
     }
   };

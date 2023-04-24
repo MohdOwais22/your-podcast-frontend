@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import image from './Logoticles-0.1s-1280px.svg';
+import image from '../../assets/Logoticles-0.1s-1280px.svg';
 import './Signup.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,7 +12,6 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [error, setError] = useState('');
   const { isAuthenticated, error: authError } = useSelector(
     (state) => state.user
   );
@@ -24,13 +23,12 @@ const Signup = () => {
   useEffect(() => {
     if (isAuthenticated) {
       toast.success('Logged in successfully');
-      // navigate('/');
+      navigate('/');
     }
   }, [isAuthenticated, navigate]);
 
   useEffect(() => {
     if (authError) {
-      setError(authError);
       toast.error(authError);
     }
     dispatch({ type: 'clearError' });
@@ -44,10 +42,8 @@ const Signup = () => {
       setEmail('');
       setName('');
       setPassword('');
-      setError('');
     } catch (error) {
-      setError(error.response);
-      toast.error(error.response);
+      toast.error(error);
     }
   };
 
@@ -56,6 +52,7 @@ const Signup = () => {
       <img className="music" src={image} alt="Logo" />
 
       <div className="container__signup">
+        <h2>SIGN UP</h2>
         <h3>Podcast for all</h3>
         <Toaster />
         <form className="form__signup" onSubmit={handleSubmit}>

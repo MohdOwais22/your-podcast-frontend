@@ -2,6 +2,7 @@ import { Button } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
+import tuneIn from '../../assets/tuneIn.png';
 
 const Navbar = ({ user }) => {
   const location = useLocation();
@@ -14,7 +15,15 @@ const Navbar = ({ user }) => {
     <nav className="container__navbar">
       <div className="navbar__left">
         <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-          <h1>Home</h1>
+          <img
+            src={tuneIn}
+            alt="logo"
+            style={{
+              width: '100%',
+              objectFit: 'contain',
+              overflow: 'hidden',
+            }}
+          />
         </Link>
       </div>
       <div className="navbar__right">

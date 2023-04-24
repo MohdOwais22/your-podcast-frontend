@@ -1,12 +1,16 @@
-.register {
+.container__login {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background: url('../../assets/63163.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.col-1 {
-  background: #fff;
+.sub_container__login {
+  background: #292929;
   padding: 40px;
   border-radius: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
@@ -19,23 +23,31 @@ h2 {
   font-weight: 600;
   margin-bottom: 20px;
   text-align: center;
+  color: #fff;
 }
 
-form {
+.form__login {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-input {
+.input__login {
   padding: 10px;
   border-radius: 5px;
-  /* border: 1px solid #ccc; */
   font-size: 1rem;
+  background-color: #1f1f1f;
+  color: #fff;
+  border: none;
+  box-shadow: 0px 0px 10px #9754d5;
+}
+
+input:focus {
+  outline: none;
 }
 
 .btn {
-  background: #ff6b6b;
+  background: #653284;
   color: #fff;
   padding: 10px 20px;
   border-radius: 5px;
@@ -46,7 +58,7 @@ input {
 }
 
 .btn:hover {
-  background: #ff4757;
+  background: #ac7bf1;
 }
 
 .btn-secondary {
@@ -55,10 +67,12 @@ input {
   font-size: 1.1rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  color: #fff;
+  background-color: #292929;
 }
 
 .error {
-  color: #ff4757;
+  color: #653284;
   font-size: 1rem;
   margin-top: -10px;
   margin-bottom: 10px;
@@ -67,10 +81,11 @@ input {
 .bottom-text {
   margin-top: 20px;
   text-align: center;
+  color: #fff;
 }
 
 @media only screen and (max-width: 600px) {
-  .col-1 {
+  .sub_container__login {
     padding: 20px;
   }
   

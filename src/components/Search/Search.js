@@ -11,18 +11,21 @@ const Search = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { filteredPodcasts = [], error } =
-    useSelector((state) => state.podcast) || {};
+  const [podcasts, setPodcasts] = useState([]);
 
-  console.log(filteredPodcasts);
+  const { filteredPodcasts, error } = useSelector((state) => state.podcast);
+
+  console.log(filteredPodcasts?.podcasts);
 
   useEffect(() => {
     if (error) {
       dispatch({ type: 'clearErrors' });
     }
-
+    if (filteredPodcasts) {
+      setPodcasts(filteredPodcasts);
+    }
     dispatch(getPodcast(keyword, category));
-  }, [dispatch, keyword, category, error]);
+  }, [dispatch, keyword, category, error, filteredPodcasts]);
 
   const searchSubmitHandler = (e) => {
     e.preventDefault();
@@ -32,23 +35,27 @@ const Search = () => {
     <Container style={{ margin: '0' }}>
       {/* <Stack direction={'row'}> */}
       <Stack direction={'column'}>
-        <Button className="buttonSearchName">Search By category</Button>
         <form className="searchBox" onSubmit={searchSubmitHandler}>
           <input
             type="text"
+            style={{
+              width: '100%',
+              padding: '10px',
+              margin: '10px 0',
+              borderBottom: '1px solid #ccc',
+            }}
             placeholder="Search a Podcast ..."
             onChange={(e) => setCategory(e.target.value)}
           />
-          <input type="submit" value="Search" />
         </form>
-        {Array.isArray(filteredPodcasts) &&
-          filteredPodcasts.map((podcast, index) => (
-            <Grid item xs={12} sm={6} md={3} key={index}>
-              {/* <Podcast completePodcast={podcast} />
-               */}
-              <h1>hello</h1>
-            </Grid>
-          ))}
+        {/* {podcasts.map((podcast, index) => (
+          <Grid item xs={12} sm={6} md={3} key={index}>
+            <Podcast completePodcast={podcast} />
+          </Grid>
+        ))}
+        {podcasts.length === 0 && (
+          <h1 style={{ textAlign: 'center' }}>No Podcasts Found</h1>
+        )} */}
       </Stack>
       {/* </Stack> */}
     </Container>

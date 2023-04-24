@@ -43,13 +43,31 @@ const Podcast = ({ completePodcast }) => {
 
   return (
     <>
-      <Box className="podcast-box" onClick={handleOpen}>
+      <Box
+        className="podcast-box"
+        onClick={handleOpen}
+        sx={{
+          width: '100%',
+          height: '100%',
+          borderRadius: '16px',
+          boxShadow: 24,
+        }}
+        style={{
+          backgroundColor: '#292929',
+          color: '#fff',
+          cursor: 'pointer',
+        }}
+      >
         <div className="box-container">
-          <Typography variant="h4">{completePodcast.name}</Typography>
-          <Typography variant="body1">{completePodcast.category}</Typography>
-          <Typography variant="body1">{completePodcast.type}</Typography>
-          <Typography variant="body1">{completePodcast.speaker}</Typography>
+          <Typography variant="h5">By: {completePodcast.name}</Typography>
+          <Typography variant="body1">
+            Category: {completePodcast.category}
+          </Typography>
+          <Typography variant="body1">
+            Speaker: {completePodcast.speaker}
+          </Typography>
           <Typography variant="body1">{completePodcast.views}</Typography>
+          <Typography variant="body1">{completePodcast.type}</Typography>
         </div>
       </Box>
       <Modal open={open} onClose={handleClose}>
@@ -85,16 +103,6 @@ const Podcast = ({ completePodcast }) => {
               margin: '16px',
             }}
           >
-            {/* <Button
-              variant="outlined"
-              style={{
-                marginBottom: '5px',
-                backgroundColor: '#fff',
-                color: '#000',
-              }}
-            >
-              Play
-            </Button> */}
             <Button
               variant="outlined"
               style={{

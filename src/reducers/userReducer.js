@@ -6,7 +6,7 @@ export const userReducer = createReducer({}, (builder) => {
       state.loading = true;
     })
     .addCase('USER_LOAD_REQUEST', (state) => {
-      state.loading = true;
+      state.userLoading = true;
     })
     .addCase('USER_LOGOUT_REQUEST', (state) => {
       state.loading = true;
@@ -24,7 +24,7 @@ export const userReducer = createReducer({}, (builder) => {
       state.message = action.payload;
     })
     .addCase('USER_LOAD_SUCCESS', (state, action) => {
-      state.loading = false;
+      state.userLoading = false;
       state.isAuthenticated = true;
       state.user = action.payload;
     })
@@ -57,7 +57,7 @@ export const userReducer = createReducer({}, (builder) => {
       state.error = action.payload;
     })
     .addCase('USER_LOAD_FAIL', (state, action) => {
-      state.loading = false;
+      state.userLoading = false;
       state.isAuthenticated = false;
       state.error = action.payload;
     })

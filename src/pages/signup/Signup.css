@@ -112,10 +112,10 @@ input:focus ~ label {
   font-family: inherit;
   font-weight: 600;
 }
-.submit__btn__signup:hover {
+/* .submit__btn__signup:hover {
   background-color: rgb(71, 38, 81);
   cursor: pointer;
-}
+} */
 
 .bottom__text__signup {
   color: #778395;
@@ -130,10 +130,10 @@ input:focus ~ label {
   color: #f9f9f9;
   font-family: inherit;
 }
-.btn__secondary__signup:hover {
+/* .btn__secondary__signup:hover {
   background-color: rgb(71, 38, 81);
   cursor: pointer;
-}
+} */
 
 /* Styles for screens with a width of 768px or greater */
 @media only screen and (min-width: 768px) {
@@ -179,3 +179,28 @@ input:focus ~ label {
     font-size: 18px;
   }
 }
+
+/* Styles for screens with a width of 1024px or greater */
+/* @media only screen and (min-width: 1024px) {
+  .container__signup {
+    width: 30%;
+    padding: 100px;
+  }
+  
+  .textbox__signup input {
+    padding: 0 30px 0 42px;
+  }
+  
+  .submit__btn__signup {
+    padding: 0 30px;
+    font-size: 20px;
+  }
+  
+  .container__signup > h2 {
+    font-size: 28px;
+  }
+  
+  .container__signup > h3 {
+    font-size: 22px;
+  }
+} */

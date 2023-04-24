@@ -11,17 +11,23 @@ import Login from './pages/login/Login.js';
 import Home from './pages/Home/Home';
 import NotFound from './pages/Not Found/NotFound';
 import Dashboard from './pages/Dashboard/Dashboard';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { loadUser } from './actions/user';
 import Navbar from './components/Navbar/Navbar';
+import Loader from './components/Loader/Loader';
 
 function App() {
-  const { isAuthenticated, user } = useSelector((state) => state.user);
-  // console.log(user?.role);
+  const { isAuthenticated, user, error } = useSelector((state) => state.user);
+  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(loadUser());
+    dispatch(loadUser())
+      .then(() => setLoading(false))
+      .catch(() => setLoading(false));
+    dispatch({ type: 'clearError' });
   }, [dispatch]);
+
+  if (loading) return <Loader />;
 
   return (
     <Router>

@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import bgImg from './img1.jpg';
+import tuneIn from '../../assets/tuneIn.png';
 import './Dashboard.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { uploadPodcast } from '../../actions/podcast';
 import { Toaster, toast } from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
-import { LinearProgress } from '@mui/material';
+import { LinearProgress, Typography } from '@mui/material';
 
 export default function Dashboard() {
   const { loading, error, podcast } = useSelector((state) => state.podcast);
@@ -65,10 +64,13 @@ export default function Dashboard() {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   };
+  const [fileType, setFileType] = useState('');
+  const [previewFile, setPreviewFile] = useState(null);
 
   const handleFilePreview = (e) => {
     const file = e.target.files[0];
-    console.log(file);
+    setPreviewFile(URL.createObjectURL(file));
+    setFileType(file.type.split('/')[0]);
     const reader = new FileReader();
     reader.onload = () => {
       setFormData({
@@ -84,7 +86,7 @@ export default function Dashboard() {
       <LinearProgress determinate value={progress} />
       <div className="container__dashboard">
         <div className="sub__container__dashboard__one">
-          <h2>ADMIN DASHBOARD</h2>
+          <Typography variant="h5">Admin Dashboard</Typography>
           <span>Add New Podcast</span>
           <Toaster />
           <form
@@ -132,7 +134,6 @@ export default function Dashboard() {
               accept=".mp3,.mp4"
               onChange={handleFilePreview}
             />
-            {formData.file === null && <span>This field is required</span>}
 
             <button disabled={loading} className="add__podcast__btn">
               Upload
@@ -142,19 +143,31 @@ export default function Dashboard() {
         <div className="sub__container__dashboard__two">
           {formData.file ? (
             <div>
-              {formData.file.type === 'audio/mp4' ? (
-                <video controls style={{ width: '300px', height: '300px' }}>
-                  <source src={formData.file} type="video/mp4" />
+              {fileType === 'video' ? (
+                <video
+                  controls
+                  controlsList="nodownload noremoteplayback nofullscreen"
+                  disablePictureInPicture
+                  disableRemotePlayback
+                  style={{ width: '300px', height: '300px' }}
+                >
+                  <source src={previewFile} type="video/mp4" />
                 </video>
               ) : (
-                <audio controls style={{ width: '300px' }}>
-                  <source src={formData.file} type="audio/mp3" />
+                <audio
+                  controls
+                  controlsList="nodownload noremoteplayback nofullscreen"
+                  disablePictureInPicture
+                  disableRemotePlayback
+                  style={{ width: '300px' }}
+                >
+                  <source src={previewFile} type="audio/mp3" />
                 </audio>
               )}
             </div>
           ) : (
             <img
-              src={bgImg}
+              src={tuneIn}
               alt=""
               style={{ width: '300px', height: '300px' }}
             />

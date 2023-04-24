@@ -50,17 +50,14 @@ const Login = () => {
 
   return (
     <section>
-      <div className="container__dashboard">
-        <div className="sub_container__dashboard">
+      <div className="container__login">
+        <div className="sub_container__login">
           <h2>Welcome Back</h2>
           <Toaster />
-          <form
-            id="form__dashboard"
-            className="flex flex-col"
-            onSubmit={onSubmit}
-          >
+          <form id="form__login" className="form__login" onSubmit={onSubmit}>
             <input
               type="email"
+              className="input__login"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               placeholder="Email"
@@ -68,6 +65,7 @@ const Login = () => {
             />
             <input
               type="password"
+              className="input__login"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
               placeholder="Password"
@@ -84,9 +82,8 @@ const Login = () => {
           <div className="bottom-text">
             Not registered yet?
             <Link to="/signup">
-              <button className="btn-secondary">Register</button>
+              <button className="btn-secondary">Register Now</button>
             </Link>{' '}
-            Now
           </div>
         </div>
       </div>
